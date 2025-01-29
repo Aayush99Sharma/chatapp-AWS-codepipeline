@@ -2,17 +2,16 @@ version: 0.0
 os: linux
 
 files:
-  - source: / 
+  - source: /
     destination: /new_chatapp
 
 hooks:
   BeforeInstall:
     - location: scripts/activate_venv_and_install_requirements.sh
       timeout: 300
-      runas: root
-
+      runas: chatapp
 
   ApplicationStart:
     - location: scripts/migrate_and_restart_django.sh
       timeout: 300
-      runas: root
+      runas: chatapp
