@@ -2,20 +2,37 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      python: 3.8
     commands:
-      - echo "Installing dependencies..."
-      - pip install virtualenv
-      - virtualenv venv
+      # Update package lists and install git (if not installed)
+      - echo Installing dependencies...
+      - apt-get update -y
+      - apt-get install -y git python3-venv python3-pip
+
+      # Clone the repository
+      - echo Cloning the repository...
+      - git clone https://github.com/Aayush99Sharma/chatapp-AWS-codepipeline.git
+
+      # Change into the repository directory
+      - cd chatapp-AWS-codepipeline
+
+      # Create a virtual environment
+      - echo Creating virtual environment...
+      - python3 -m venv venv
+
+      # Activate the virtual environment
+      - echo Activating virtual environment...
       - source venv/bin/activate
+
+      # Install dependencies from requirements.txt
+      - echo Installing requirements...
       - pip install -r requirements.txt
 
   build:
     commands:
-      - echo "Build completed."
+      # Add any additional build commands here
+      - echo Build phase completed.
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: $CODEBUILD_SRC_DIR
+    - '**/*'  # Include all files for the artifact (optional, based on what you need in the artifact)
+  discard-paths: no
