@@ -11,10 +11,6 @@ hooks:
       timeout: 300
       runas: root
 
-  ApplicationStop:
-    - location: scripts/stop_django_service.sh
-      timeout: 300
-      runas: root
 
   ApplicationStart:
     - location: scripts/migrate_and_restart_django.sh
