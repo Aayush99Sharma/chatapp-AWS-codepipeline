@@ -2,14 +2,13 @@ version: 0.0
 os: linux
 
 hooks:
-  - location: scripts/git_pull.sh
-    timeout: 300
-    runas: chatapp
+  BeforeInstall:
+    - location: scripts/git_pull.sh
+      runas: chatapp
 
-  - location: scripts/activate_venv_and_install_requirements.sh
-    timeout: 300
-    runas: chatapp
+    - location: scripts/activate_venv_and_install_requirements.sh
+      runas: chatapp
 
-  - location: scripts/migrate_and_restart_django.sh
-    timeout: 300
-    runas: chatapp
+  ApplicationStart:
+    - location: scripts/migrate_and_restart_django.sh
+      runas: chatapp
