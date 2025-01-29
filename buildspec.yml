@@ -19,9 +19,9 @@ phases:
       - echo Creating virtual environment...
       - python3 -m venv venv
 
-      # Activate the virtual environment
+      # Activate the virtual environment using the full path
       - echo Activating virtual environment...
-      - source venv/bin/activate
+      - source /codebuild/output/src123456789/src/chatapp-AWS-codepipeline/venv/bin/activate  # Full path to the venv
 
       # Install dependencies from requirements.txt
       - echo Installing requirements...
