@@ -3,6 +3,11 @@ os: linux
 
 
 hooks:
+
+    - location: scripts/git_pull.sh
+      timeout: 300
+      runas: chatapp
+
   BeforeInstall:
     - location: scripts/activate_venv_and_install_requirements.sh
       timeout: 300
